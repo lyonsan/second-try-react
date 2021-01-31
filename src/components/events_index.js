@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 
 import { readEvents } from '../actions'
 
 class EventsIndex extends Component {
+  //マウント後にやりたい処理。ここではreadEventsを実行させること
   componentDidMount() {
     this.props.readEvents()
   }
@@ -22,18 +24,23 @@ class EventsIndex extends Component {
   render() {
     return (
         /*reducer内で定義したvalueを受け取るため、props.valueにする*/
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Body</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderEvents()}
-          </tbody>
-        </table>
+        <React.Fragment>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Body</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderEvents()}
+            </tbody>
+          </table>
+          {/* リンクさせる */}
+          <Link to="events/new">New Event</Link>
+        </React.Fragment>
+        
     )
   }
 }
