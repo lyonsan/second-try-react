@@ -1,8 +1,8 @@
 // アプリ内に存在するレデューサーを総括する役割を担う
 import { combineReducers } from 'redux'
-import count from './count'
+import events from './events'
 
 // ここにリデューサーを噛ませる
-export default combineReducers({ count })
+export default combineReducers({ events })
 
 
